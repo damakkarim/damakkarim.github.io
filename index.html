@@ -120,21 +120,133 @@ a { color: inherit; }
 .socials .ic { width: 20px; height: 20px; }
 
 /* Portrait */
-.visual { position: relative; display: grid; place-items: center; }
-.ring { position: relative; width: min(340px, 78vw); aspect-ratio: 1; border-radius: 50%; padding: 5px; background: conic-gradient(from 0deg, var(--c1), var(--c2), var(--c3), var(--c1)); animation: spin 8s linear infinite; box-shadow: 0 0 80px -10px var(--glow); }
-@keyframes spin { to { transform: rotate(360deg); } }
-.ring .photo { width: 100%; height: 100%; border-radius: 50%; overflow: hidden; background: var(--bg); display: grid; place-items: center; font: 800 5rem var(--display); animation: spin 8s linear infinite reverse; position: relative; }
-.ring .photo span { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.ring .photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.float { position: absolute; display: flex; align-items: center; gap: .5rem; padding: .5rem .8rem; border-radius: 14px; background: var(--card); border: 1px solid var(--line); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); font-size: .85rem; font-weight: 600; box-shadow: 0 10px 30px -12px rgba(0,0,0,.5); animation: bob 5s ease-in-out infinite; }
-.float img { width: 22px; height: 22px; }
-.float .ic { color: var(--c1); }
-.f1 { top: 4%; left: -4%; } .f2 { top: 18%; right: -6%; animation-delay: -1.5s; }
-.f3 { bottom: 16%; left: -8%; animation-delay: -3s; } .f4 { bottom: 2%; right: 2%; animation-delay: -2.2s; }
-@keyframes bob { 50% { transform: translateY(-12px); } }
-.scroll-hint { position: absolute; bottom: 1.6rem; left: 50%; transform: translateX(-50%); z-index: 1; width: 26px; height: 42px; border: 2px solid var(--line); border-radius: 14px; }
-.scroll-hint::after { content: ""; position: absolute; top: 7px; left: 50%; width: 4px; height: 8px; margin-left: -2px; border-radius: 2px; background: var(--c1); animation: wheel 1.8s infinite; }
-@keyframes wheel { 0% { opacity: 1; transform: translateY(0); } 100% { opacity: 0; transform: translateY(16px); } }
+.visual {
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.ring {
+  position: relative;
+  width: min(340px, 78vw);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  padding: 5px;
+  background: conic-gradient(
+    from 0deg,
+    var(--c1),
+    var(--c2),
+    var(--c3),
+    var(--c1)
+  );
+  box-shadow: 0 0 80px -10px var(--glow);
+  animation: none;
+  overflow: hidden;
+}
+
+.ring img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  animation: none !important;
+  transform: none !important;
+}
+
+/* Floating technologies */
+.float {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .5rem .8rem;
+  border-radius: 14px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  font-size: .85rem;
+  font-weight: 600;
+  box-shadow: 0 10px 30px -12px rgba(0,0,0,.5);
+  animation: bob 5s ease-in-out infinite;
+}
+
+.float img {
+  width: 22px;
+  height: 22px;
+}
+
+.float .ic {
+  color: var(--c1);
+}
+
+.f1 {
+  top: 4%;
+  left: -4%;
+}
+
+.f2 {
+  top: 18%;
+  right: -6%;
+  animation-delay: -1.5s;
+}
+
+.f3 {
+  bottom: 16%;
+  left: -8%;
+  animation-delay: -3s;
+}
+
+.f4 {
+  bottom: 2%;
+  right: 2%;
+  animation-delay: -2.2s;
+}
+
+@keyframes bob {
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 1.6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  width: 26px;
+  height: 42px;
+  border: 2px solid var(--line);
+  border-radius: 14px;
+}
+
+.scroll-hint::after {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: 50%;
+  width: 4px;
+  height: 8px;
+  margin-left: -2px;
+  border-radius: 2px;
+  background: var(--c1);
+  animation: wheel 1.8s infinite;
+}
+
+@keyframes wheel {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
 
 /* ---------- Marquee ---------- */
 .marquee { overflow: hidden; border-block: 1px solid var(--line); background: var(--card); padding: 1.1rem 0; mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
@@ -364,14 +476,30 @@ footer { padding: 2rem 0 3rem; text-align: center; color: var(--muted); font-siz
       </div>
 
       <div class="visual">
-        <div class="ring">
-          <div class="photo"><span>KD</span><img src="assets/cv_photo.jpeg" alt="Portrait de Karim Damak" onerror="this.remove()"></div>
-        </div>
-        <div class="float f1"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="" onerror="this.remove()">Python</div>
-        <div class="float f2"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" alt="" onerror="this.remove()">FastAPI</div>
-        <div class="float f3"><svg class="ic"><use href="#i-sparkles"/></svg>RAG et LLM</div>
-        <div class="float f4"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="" onerror="this.remove()">Docker</div>
-      </div>
+		  <div class="ring">
+			<img src="./assets/cv_photo.jpeg" alt="Portrait de Karim Damak">
+		  </div>
+
+		  <div class="float f1">
+			<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="">
+			Python
+		  </div>
+
+		  <div class="float f2">
+			<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" alt="">
+			FastAPI
+		  </div>
+
+		  <div class="float f3">
+			<svg class="ic"><use href="#i-sparkles"/></svg>
+			RAG et LLM
+		  </div>
+
+		  <div class="float f4">
+			<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="">
+			Docker
+		  </div>
+		</div>
     </div>
     <div class="scroll-hint" aria-hidden="true"></div>
   </section>
@@ -412,7 +540,7 @@ footer { padding: 2rem 0 3rem; text-align: center; color: var(--muted); font-siz
 
       <div class="stats">
         <div class="card stat reveal"><div class="num grad-text" data-count="4">0</div><small>expériences professionnelles</small></div>
-        <div class="card stat reveal" style="--d:.08s"><div class="num grad-text" data-count="3">0</div><small>API REST FastAPI exposées</small></div>
+        <!--<div class="card stat reveal" style="--d:.08s"><div class="num grad-text" data-count="3">0</div><small>API REST FastAPI exposées</small></div>-->
         <div class="card stat reveal" style="--d:.16s"><div class="num grad-text" data-count="2">0</div><small>diplômes en 2025</small></div>
         <div class="card stat reveal" style="--d:.24s"><div class="num grad-text" data-count="4">0</div><small>langues parlées</small></div>
       </div>
